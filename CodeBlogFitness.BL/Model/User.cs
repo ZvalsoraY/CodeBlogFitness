@@ -22,12 +22,12 @@ namespace CodeBlogFitness.BL.Model
         /// <summary>
         /// Пол.
         /// </summary>
-        public Gender Gender { get; }
+        public Gender Gender { get; set; }
 
         /// <summary>
         /// Дата рождения.
         /// </summary>
-        public DateTime BirthDate { get; }
+        public DateTime BirthDate { get; set; }
 
         /// <summary>
         /// Вес.
@@ -88,6 +88,16 @@ namespace CodeBlogFitness.BL.Model
             BirthDate = birthDate;
             Weight = weight;
             Height = height;
+        }
+
+        public User(string name) 
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("Имя пользователя не может быть пустым или null.", nameof(name));
+            }
+
+            Name = name;
         }
 
         public override string ToString()
