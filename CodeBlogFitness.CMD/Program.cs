@@ -18,6 +18,7 @@ namespace CodeBlogFitness.CMD // Note: actual namespace depends on the project n
             var name = Console.ReadLine();
 
             var userController = new UserController(name);
+            var eatingController = new EatingController(userController.CurrentUser);
             if (userController.IsNewUser)
             {
                 Console.WriteLine("Введите пол");
@@ -30,7 +31,41 @@ namespace CodeBlogFitness.CMD // Note: actual namespace depends on the project n
             }
 
             Console.WriteLine(userController.CurrentUser);
+
+            Console.WriteLine("Что вы хотите сделать?");
+            Console.WriteLine("Е - ввести прием пищи");
+            var key = Console.ReadKey();
+
+            if (key.Key == ConsoleKey.E)
+            {
+                var foods = EnterEating();
+                eatingController.Add(foods.Food, foods.Weight);
+
+                foreach (var item in eatingController.Eating.Foods)
+                {
+                    Console.WriteLine($"\t{item.Key} - {item.Value}");
+                }
+                
+            }
+
             Console.ReadLine();
+        }
+
+        private static (Food Food, double Weight) EnterEating()
+        {
+            Console.WriteLine("Введите название продукта:");
+            var food = Console.ReadLine();
+
+            var calories = ParseDouble("калорийность");
+            var prots = ParseDouble("белки");
+            var fats = ParseDouble("жиры");
+            var carbs = ParseDouble("углеводы");
+
+            //Console.WriteLine("Введите вес порции:");
+            var weight = ParseDouble("вес порции");
+            var product = new Food(food, calories, prots, fats, carbs);
+
+            return (Food: product,Weight: weight);
         }
 
         private static DateTime ParseDataTime()
@@ -63,7 +98,7 @@ namespace CodeBlogFitness.CMD // Note: actual namespace depends on the project n
                 }
                 else
                 {
-                    Console.WriteLine($"Неверный формат {name}");
+                    Console.WriteLine($"Неверный формат поля");
                 }
             }
         }
