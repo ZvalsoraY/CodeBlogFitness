@@ -3,6 +3,8 @@ using CodeBlogFitness.BL.Controller;
 using CodeBlogFitness.BL.Model;
 using System.Reflection;
 using CodeBlogFitness.BL;
+using System.Globalization;
+using System.Resources;
 
 namespace CodeBlogFitness.CMD // Note: actual namespace depends on the project name.
 {
@@ -12,9 +14,19 @@ namespace CodeBlogFitness.CMD // Note: actual namespace depends on the project n
 
         static void Main()
         {
-            Console.WriteLine("Вас приветствует приложение CodeBlogFitness");
+            //var culture = CultureInfo.CreateSpecificCulture("ru_ru");
+            //var culture = CultureInfo.CreateSpecificCulture("en_us");
+            var culture = CultureInfo.CurrentCulture;
+            var resourceManager = new ResourceManager("CodeBlogFitness.CMD.Languages.Messages.en_us", typeof(Program).Assembly);
 
-            Console.WriteLine("Введите имя пользователя");
+            //Console.WriteLine("Вас приветствует приложение CodeBlogFitness");
+            //Console.WriteLine(Languages.Messages.Hello);
+            Console.WriteLine(resourceManager.GetString("Hello", culture));
+
+            //Console.WriteLine("Введите имя пользователя");
+            //Console.WriteLine(Languages.Messages.EnterName);
+            Console.WriteLine(resourceManager.GetString("EnterName", culture));
+
             var name = Console.ReadLine();
 
             var userController = new UserController(name);

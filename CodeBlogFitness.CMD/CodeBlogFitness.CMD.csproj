@@ -8,11 +8,63 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CodeBlogFitness.BL\CodeBlogFitness.BL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Languages\Messages_1.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Messages_1.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Languages\Messages.ru_ru.Designer.cs">
+      <DependentUpon>Messages.ru_ru.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Languages\Messages.en_us.Designer.cs">
+      <DependentUpon>Messages.en_us.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Languages\Messages_ru_ru.Designer.cs">
+      <DependentUpon>Messages_ru_ru.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Languages\Messages_en_us.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Messages_en_us.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Languages\Messages_1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages_1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Languages\Messages.ru_ru.resx">
+      <LastGenOutput>Messages.ru_ru.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Languages\Messages.en_us.resx">
+      <LastGenOutput>Messages.en_us.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Languages\Messages_ru_ru.resx">
+      <LastGenOutput>Messages_ru_ru.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Languages\Messages_en_us.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages_en_us.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
